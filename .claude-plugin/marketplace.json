@@ -1,0 +1,14 @@
+{
+  "name": "sourcetms",
+  "description": "Thomas's (@sourcetms) Claude Code plugins.",
+  "owner": { "name": "Thomas (@sourcetms)", "url": "https://vault.sourcetms.com" },
+  "plugins": [
+    {
+      "name": "sourcetms-vault",
+      "source": "./",
+      "description": "Members' vault over MCP: playbooks, build stack and installable Claude Code skills.",
+      "version": "1.0.0",
+      "category": "productivity"
+    }
+  ]
+}

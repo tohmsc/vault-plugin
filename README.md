@@ -9,14 +9,14 @@ This plugin holds no vault content. Everything is fetched over MCP after you sig
 In Claude Code:
 
 ```
-/plugin marketplace add sourcetms/vault-plugin
+/plugin marketplace add tohmsc/vault-plugin
 /plugin install sourcetms-vault@sourcetms
 ```
 
 Or from a shell:
 
 ```
-claude plugin marketplace add sourcetms/vault-plugin
+claude plugin marketplace add tohmsc/vault-plugin
 claude plugin install sourcetms-vault@sourcetms
 ```
 

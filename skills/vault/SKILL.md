@@ -1,6 +1,6 @@
 ---
 name: vault
-description: Use Thomas's (@sourcetms) members' vault through the vault MCP tools. Use when the user says "set me up like Thomas", "install Thomas's <x> skill", "what does Thomas use for <x>", "how does Thomas do <x>", asks about @sourcetms playbooks, build stack or skills, or wants the top skills from the vault.
+description: Use Thomas's (@sourcetms) members' vault through the vault MCP tools. Use when the user says "set me up like Thomas", "install Thomas's <x> skill", "what does Thomas use for <x>", "how does Thomas do <x>", asks about @sourcetms playbooks, build stack or skills, wants the top skills from the vault, or says "update my vault skills".
 ---
 
 # Thomas's vault
@@ -16,7 +16,8 @@ The `vault` MCP server (from this plugin) exposes Thomas's paid members' vault. 
 | `get_page(section, slug)` | You know the page. Returns the full Markdown. Quote from it, cite its URL. |
 | `whats_new` | The user wants a tour or asks what's new. |
 | `list_skills` | The user asks which skills Thomas has or which are popular. Ranked by member use. |
-| `get_skill(name)` | The user wants to install a skill. Returns every file and install steps. |
+| `get_skill(name, reason?)` | The user wants to install a skill (or update one: `reason: "update"`). Returns every file, a `.vault.json` version marker, and install steps. |
+| `check_skill_updates(installed)` | The user wants to update their vault skills, or the plugin said updates are available. |
 
 There is also an MCP prompt, `setup_like_thomas`.
 
@@ -38,6 +39,15 @@ There is also an MCP prompt, `setup_like_thomas`.
 2. Ask which to install (default: all five).
 3. Install each with the steps above.
 4. End with a table: skill, path, trigger phrase.
+
+**"Update my vault skills"** (also when the plugin reports updates at session start)
+1. Find installed vault skills: read every `~/.claude/skills/*/.vault.json` and `.claude/skills/*/.vault.json` in the project. Each has `skill` and `version`.
+2. Call `check_skill_updates` with `{ "<skill>": "<version>", ... }`.
+3. Show the outdated ones and say that updating replaces the installed files, so any local edits to them are lost. Ask which to update (default: all).
+4. For each, call `get_skill(name, reason: "update")` and follow its update steps: delete files from the old marker's `files` list that are no longer returned, write every returned file including the new `.vault.json`.
+5. Say which skills were updated and that changes load in the next session.
+
+Skills installed before version tracking have no `.vault.json`. If a folder in `~/.claude/skills/` has the same name as a vault skill (`list_skills`) but no marker, offer to reinstall it with `get_skill(name, reason: "update")` so it gets tracked. Don't touch folders the user didn't confirm; they may be their own skills with the same name.
 
 ## Rules
 - Only install skills the user asked for.

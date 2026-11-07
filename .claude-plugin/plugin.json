@@ -1,6 +1,6 @@
 {
   "name": "sourcetms-vault",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Connects Claude Code to Thomas's (@sourcetms) members' vault: his playbooks, build stack and Claude Code skills, fetched over MCP.",
   "author": { "name": "Thomas (@sourcetms)", "url": "https://vault.sourcetms.com" },
   "homepage": "https://vault.sourcetms.com",

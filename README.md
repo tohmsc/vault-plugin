@@ -37,6 +37,16 @@ Just ask:
 
 Skills install to `~/.claude/skills/<name>/`. Start a new session to load them.
 
+## Updates
+
+Every skill you install from the vault gets a small `.vault.json` file that records its version. When a new session starts, the plugin checks those versions against the vault (one request, no vault content, nothing about you is sent) and tells you when a skill changed:
+
+> 2 vault skills have updates: ship, teardown. Say "update my vault skills" to get them.
+
+Say that, or run `/sourcetms-vault:vault update`. Claude shows what changed and asks before replacing anything. Updating overwrites the installed files, so local edits to a vault skill are lost.
+
+Vault pages and the skill list are always read live, so they are never out of date.
+
 ## Without the plugin
 
 ```

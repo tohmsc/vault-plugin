@@ -47,6 +47,35 @@ Say that, or run `/sourcetms-vault:vault update`. Claude shows what changed and 
 
 Vault pages and the skill list are always read live, so they are never out of date.
 
+## Amp
+
+One command installs the Amp plugin for every project on your machine:
+
+```
+amp plugins add https://raw.githubusercontent.com/tohmsc/vault-plugin/main/amp/sourcetms-vault.ts
+```
+
+It adds the `sourcetms-vault` skill (with the vault MCP server bundled), the same skill update notices as the Claude Code plugin, and two commands in the command palette (Ctrl+O): **Top skills** and **Update my vault skills**.
+
+Then connect the server and sign in:
+
+```
+amp mcp add sourcetms-vault https://vault.sourcetms.com/mcp
+```
+
+Start Amp. Your browser opens; enter the email you use for the vault and click the magic link. `amp mcp doctor` shows whether it's connected.
+
+Skills you install from the vault go to `~/.claude/skills/<name>/`, which Amp and Claude Code both load, so one install serves both.
+
+## Cursor and Grok Bot
+
+This repo is also a Cursor plugin (`.cursor-plugin/plugin.json`). Grok Bot supports the same MCP servers, plugins and skills as Cursor, so the one plugin serves both. It adds the vault MCP server, the `sourcetms-vault` skill and a `/vault` command.
+
+- **Grok Bot:** open Settings (top right) and add the custom MCP server `https://vault.sourcetms.com/mcp`, or ask your bot to connect it. Sign in with your vault email. Then ask your bot to install the plugin from `https://github.com/tohmsc/vault-plugin`.
+- **Cursor:** install it from the Cursor Marketplace (Customize, then search "sourcetms vault"). To try it before then, clone this repo into `~/.cursor/plugins/local/` and run **Developer: Reload Window**.
+
+Skills you install go to `~/.cursor/skills/<name>/`. Say "update my vault skills", or run `/vault update`, to update them. (Cursor has no session-start update notice yet; Claude Code and Amp do.)
+
 ## Without the plugin
 
 ```

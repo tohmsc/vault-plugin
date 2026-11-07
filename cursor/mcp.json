@@ -1,0 +1,7 @@
+{
+  "mcpServers": {
+    "sourcetms-vault": {
+      "url": "https://vault.sourcetms.com/mcp"
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "name": "sourcetms-vault",
+  "version": "1.1.0",
+  "description": "Connects Cursor and Grok Bot to Thomas's (@sourcetms) members' vault: his playbooks, build stack and agent skills, fetched over MCP.",
+  "author": { "name": "Thomas (@sourcetms)" },
+  "homepage": "https://vault.sourcetms.com",
+  "repository": "https://github.com/tohmsc/vault-plugin",
+  "license": "MIT",
+  "keywords": ["mcp", "skills", "playbooks", "sourcetms", "grok-bot"],
+  "skills": "./cursor/skills/",
+  "commands": "./cursor/commands/",
+  "mcpServers": "./cursor/mcp.json",
+  "hooks": "./cursor/hooks.json"
+}
